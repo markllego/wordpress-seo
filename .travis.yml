@@ -247,7 +247,7 @@ script:
     fi
   # PHP Unit
   - |
-    if [[ "$PHPUNIT" == "1" && "$WP_VERSION" != "latest" ]] && [[ "$WP_VERSION" >= "5.9" || "$WP_VERSION" == "master" ]]; then
+    if [[ "$PHPUNIT" == "1" && "$WP_VERSION" != "latest" ]] && [[ "$WP_VERSION" == "5.9" || "${WP_VERSION:0:1}" == "6" || "$WP_VERSION" == "master" ]]; then
       travis_fold start "PHP.integration-tests" && travis_time_start
       travis_retry composer remove --dev phpunit/phpunit || true &&
       travis_retry composer update yoast/wp-test-utils --with-all-dependencies --ignore-platform-reqs --no-interaction &&
